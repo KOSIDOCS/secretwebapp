@@ -24,7 +24,7 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const app = express();
 
-const port = 3000;
+// const port = 3000;
 
 // Testing our evironment variable.
 // console.log(process.env.API_KEY);
@@ -251,7 +251,11 @@ app.post("/login", function(req, res) {
 
 
 
-app.listen(port, function() {
- console.log("Server started on port 3000.");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
+app.listen(port, function() {
+  console.log("Server has started successfully");
 });
